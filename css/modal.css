@@ -255,6 +255,15 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
+.text-control:invalid {
+    border: 2px solid #FF4E60;
+}
+.error {
+  color: #FF4E60;
+}
+.text-control:invalid + span:before  {
+  content: "\f00d";
+}
 /* 
 input[data-error]::after {
     content: attr(data-error);
@@ -561,4 +570,3 @@ footer {
     opacity: 1;
   }
 }
-
