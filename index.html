@@ -50,42 +50,44 @@
         </button>
       </div>
 
+      <!--Modal-->
       <div class="bground">
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
+            <!--Form-->
             <form
+              id="reserve"
               name="reserve"
               action="index.html"
-              method="POST"
-              id="reserve"
-              onsubmit="return validate();"
+              method="get"
             >
               <div
-                class="formData">
+                class="formData" data-error="Vous devez saisir au moins 2 caractères et non numérique." data-error-visible="false">
                 <label for="first">Prénom</label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="first"
                   name="first"
+                  minlength="2"
                   placeholder="Ex: Julien" 
                 /><br>
-                <span id="first-error" class="error"></span>
               </div>
               <div
-                class="formData">
+                class="formData" data-error="Veuillez saisir au moins 2 caractères et non numérique." data-error-visible="false">
                 <label for="last">Nom</label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="last"
                   name="last"
+                  minlength="2"
                   placeholder="Ex: Martin"
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData" data-error="Veuillez saisir une adresse email valide." data-error-visible="false">
                 <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
@@ -96,7 +98,7 @@
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData" data-error="Veuillez saisir votre date de naissance." data-error-visible="false">
                 <label for="bithdate">Date de naissance</label><br>
                 <input
                   class="text-control"
@@ -109,11 +111,11 @@
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity">
+                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" placeholder="Ex: 1">
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
-              <div
-                class="formData">
+              <div class="formData" id="locations" data-error="Veuillez sélectionner une ville."
+              data-error-visible="false">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -206,11 +208,16 @@
               <input
                 class="btn-submit"
                 type="submit"
-                class="button"
                 value="C'est parti"
               />
             </form>
           </div>
+        </div>
+      </div>
+      <div id="modal-confirmation" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Merci pour votre réservation!</p>
         </div>
       </div>
     </main>
@@ -220,5 +227,7 @@
       </p>
     </footer>
     <script src="js/modal.js"></script>
+    <script src="js/form-validation.js"></script>
+    <script src="js/modal-confirmation.js"></script>
   </body>
 </html>
