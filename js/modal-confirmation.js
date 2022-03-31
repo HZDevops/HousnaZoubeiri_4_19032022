@@ -1,17 +1,18 @@
-const modalReserveConfirmation = document.getElementById('modal-confirmation');
-const modalReserveCross = document.getElementsByClassName('close-modal-confirmation');
+const modalConfirmation = document.getElementById('modal-confirmation');
+const modalConfirmationCross = document.getElementsByClassName('close-modal-confirmation'
+);
 
 //Display a modal when reservation form is validated
 function displayModalConfirmation() {
     modalbg.style.display = 'none';
-    modalReserveConfirmation.style.display = 'block';
-    modalReserveCross.addEventListener('click', function (e) {
-        e.preventDefault();
-        modalReserveConfirmation.style.display = 'none';
+    modalConfirmation.style.display = 'block';
+    modalConfirmationCross.addEventListener('click', function (e) {
+      e.preventDefault();
+      modalConfirmation.style.display = 'none';
     });
     window.addEventListener('click', function (e) {
-        if (e.target === modalReserveConfirmation) {
-         modalReserveConfirmation.style.display = 'none';
+        if (e.target === modalConfirmation) {
+         modalConfirmation.style.display = 'none';
         }
     });
 }

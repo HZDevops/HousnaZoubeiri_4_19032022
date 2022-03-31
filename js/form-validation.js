@@ -60,6 +60,30 @@ function checkEmail() {
     }
 }
 
+// Check birth date field form
+function checkBirthDate() {
+    if (birthdate.value.trim().length !== 10) {
+        birthdate.parentElement.setAttribute('data-error-visible', 'true');
+        birthdate.style.border = '2px solid #e54858';
+        return false;
+    }
+    birthdate.parentElement.setAttribute('data-error-visible', 'false');
+    birthdate.style.border = 'solid #279e7a 0.19rem';
+    return true;
+}
+
+// Check tournament quantity field form
+function checkTournamentsQuantity() {
+    if (quantity.value.trim().length === 0 || isNaN(quantity.value.trim()) === true || quantity.value.trim() < 0) {
+        quantity.parentElement.setAttribute('data-error-visible', 'true');
+        quantity.style.border = '2px solid #e54858';
+        return false;
+    }
+    quantity.parentElement.setAttribute('data-error-visible', 'false');
+    quantity.style.border = 'solid #279e7a 0.19rem';
+    return true;
+}
+
 // Call check field function in each event in the input
 function EventHandlerFieldForm(element, method, event) {
   element.addEventListener(event, method);
@@ -67,25 +91,31 @@ function EventHandlerFieldForm(element, method, event) {
 EventHandlerFieldForm(firstName, checkFirstName, 'focusout');
 EventHandlerFieldForm(lastName, checkLastName, 'focusout');
 EventHandlerFieldForm(email, checkEmail, 'focusout');
+EventHandlerFieldForm(birthdate, checkBirthDate, 'focusout');
+EventHandlerFieldForm(quantity, checkTournamentsQuantity, 'focusout');
 
 // Check all fields validation
 function checkFieldsValidation() {
     checkFirstName();
     checkLastName();
     checkEmail();
+    checkBirthDate ();
+    checkTournamentsQuantity();
 }
 
 // Check form validation
 function checkFormValidation() {
   if (
     checkFirstName() === true &&
-    checkLastName() === true && 
-    checkEmail() === true 
-    ) {
+    checkLastName() === true &&
+    checkEmail() === true &&
+    checkBirthDate() === true &&
+    checkTournamentsQuantity() === true
+  ) {
     return true;
-    } else {
+  } else {
     return false;
-    }
+  }
 }
 
 //Validate form when submitted
