@@ -1,5 +1,5 @@
 const modalReserveConfirmation = document.getElementById('modal-confirmation');
-const modalReserveCross = document.getElementsByClassName('close')[0];
+const modalReserveCross = document.getElementsByClassName('close-modal-confirmation');
 
 //Display a modal when reservation form is validated
 function displayModalConfirmation() {
