@@ -529,9 +529,9 @@ footer {
   }
 }
 
-/***Modal confirmation***/
+/***Pop-up modal confirmation***/
 /* Background */
-.modal {
+.pop-up {
     display: none;
     position: fixed;
     z-index: 1;
@@ -559,16 +559,19 @@ footer {
 }
 
 /* The close button */
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+.close-modal-confirmation {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: relative;
+  top: -25px;
+  right: -10px;
 }
 
-.close:hover,
-.close:focus {
-    color: black;
+.close-modal-confirmation:hover,
+.close-modal-confirmation:focus {
+    color: #FF4E60;
     text-decoration: none;
     cursor: pointer;
 }
