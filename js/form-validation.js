@@ -7,6 +7,7 @@ const quantity = document.getElementById('quantity');
 const allLocations = document.getElementById('locations');
 const reserveForm = document.getElementById('reserve');
 const errorTest = document.getElementById('error');
+const TermOfUse = document.getElementById ('checkbox1');
 
 // Regex expression
 const regexName = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+$/;
@@ -81,6 +82,29 @@ function checkTournamentQuantity() {
   return true;
 }
 
+// Check location input
+function checkLocation() {
+  allLocations.setAttribute('data-error-visible', 'true');
+  for (let i = 0; i < locations.length; i++) {
+    if (locations[i].checked) {
+      allLocations.setAttribute('data-error-visible', 'false');
+      return true;
+    }
+  }
+  return false;
+}
+
+// Check if terms of use checkbox is checked
+function checkTermOfUse() {
+  if (TermOfUse.checked === false) {
+    TermOfUse.parentElement.setAttribute('data-error-visible', 'true');
+    return false;
+  }
+  TermOfUse.parentElement.setAttribute('data-error-visible', 'false');
+  return true;
+}
+
+
 /**
  * Call validity check field function in each focusout event of the field
  * @param {HTMLElement} element
@@ -95,6 +119,8 @@ checkFieldValidity(lastName, checkLastName, 'focusout');
 checkFieldValidity(email, checkEmail, 'focusout');
 checkFieldValidity(birthdate, checkBirthDate, 'focusout');
 checkFieldValidity(quantity, checkTournamentQuantity, 'focusout');
+checkFieldValidity(quantity, checkLocation, 'change');
+checkFieldValidity(quantity, checkTermOfUse, 'change');
 
 //Check all inputs form validity
 function checkAllFieldsValidity() {
@@ -103,6 +129,8 @@ function checkAllFieldsValidity() {
     checkEmail();
     checkBirthDate ();
     checkTournamentQuantity();
+    checkLocation();
+    checkTermOfUse();
 }
 
 /**
@@ -115,7 +143,9 @@ function checkFormValidity() {
     checkLastName() === true &&
     checkEmail() === true &&
     checkBirthDate() === true &&
-    checkTournamentQuantity() === true
+    checkTournamentQuantity() === true &&
+    checkLocation() === true &&
+    checkTermOfUse() === true
   ) {
     return true;
   } else {
