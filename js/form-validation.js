@@ -5,14 +5,23 @@ const email = document.getElementById('email');
 const birthdate = document.getElementById('birthdate');
 const quantity = document.getElementById('quantity');
 const allLocations = document.getElementById('locations');
+const locationOneButton = document.getElementById('location1');
+const locationTwoButton = document.getElementById('location2');
+const locationThreeButton = document.getElementById('location3');
+const locationFourButton = document.getElementById('location4');
+const locationFiveButton = document.getElementById('location5');
+const locationSixButton = document.getElementById('location6');
+const TermOfUse = document.getElementById('checkbox1');
 const reserveForm = document.getElementById('reserve');
-const errorTest = document.getElementById('error');
-const TermOfUse = document.getElementById ('checkbox1');
 
 // Regex expression
 const regexName = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+$/;
 
-// Check firstname validity input
+
+/**
+ * Check firstname validity input
+ * @returns {Boolean}
+ **/
 function checkFirstName() {
   if (
     firstName.value.trim().length < 2 ||
@@ -28,7 +37,10 @@ function checkFirstName() {
   return true;
 }
 
-// Check lastname validity input
+/**
+ * Check lastname validity input
+ * @returns {Boolean}
+ **/
 function checkLastName() {
   if (
     lastName.value.trim().length < 2 ||
@@ -44,7 +56,10 @@ function checkLastName() {
   return true;
 }
 
-// Check email validity input
+/**
+ * Check email validity input
+ * @returns {Boolean}
+ **/
 function checkEmail() {
   const regexEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     
@@ -58,7 +73,10 @@ function checkEmail() {
   return false;
 }
 
-// Check birth date validity input
+/**
+ * Check birth date validity input
+ * @returns {Boolean}
+ **/
 function checkBirthDate() {
   if (birthdate.value.trim().length !== 10) {
     birthdate.parentElement.setAttribute('data-error-visible', 'true');
@@ -70,7 +88,10 @@ function checkBirthDate() {
   return true;
 }
 
-// Check tournament quantity validity input
+/**
+ * Check tournament quantity validity input
+ * @returns {Boolean}
+ **/
 function checkTournamentQuantity() {
   if (quantity.value.trim().length === 0 || isNaN(quantity.value.trim()) === true || quantity.value.trim() < 0) {
     quantity.parentElement.setAttribute('data-error-visible', 'true');
@@ -82,19 +103,31 @@ function checkTournamentQuantity() {
   return true;
 }
 
-// Check location input
+/**
+ * Check if one location input is checked
+ * @returns {Boolean}
+ **/
 function checkLocation() {
-  allLocations.setAttribute('data-error-visible', 'true');
-  for (let i = 0; i < locations.length; i++) {
-    if (locations[i].checked) {
-      allLocations.setAttribute('data-error-visible', 'false');
-      return true;
-    }
+  if (
+    locationOneButton.checked === false &&
+    locationTwoButton.checked === false &&
+    locationThreeButton.checked === false &&
+    locationFourButton.checked === false &&
+    locationFiveButton.checked === false &&
+    locationSixButton.checked === false
+  ) 
+  {
+    allLocations.setAttribute('data-error-visible', 'true');
+    return false;
   }
-  return false;
+  allLocations.setAttribute('data-error-visible', 'false');
+  return true;
 }
 
-// Check if terms of use checkbox is checked
+/**
+ * Check if terms of use checkbox is checked
+ * @returns {Boolean}
+ **/
 function checkTermOfUse() {
   if (TermOfUse.checked === false) {
     TermOfUse.parentElement.setAttribute('data-error-visible', 'true');
@@ -104,26 +137,25 @@ function checkTermOfUse() {
   return true;
 }
 
-
 /**
  * Call validity check field function in each focusout event of the field
  * @param {HTMLElement} element
  * @param {Boolean} method
  * @param {Event} event
  **/
-function checkFieldValidity(element, method, event) {
+function checkInputValidity(element, method, event) {
   element.addEventListener(event, method);
 }
-checkFieldValidity(firstName, checkFirstName, 'focusout');
-checkFieldValidity(lastName, checkLastName, 'focusout');
-checkFieldValidity(email, checkEmail, 'focusout');
-checkFieldValidity(birthdate, checkBirthDate, 'focusout');
-checkFieldValidity(quantity, checkTournamentQuantity, 'focusout');
-checkFieldValidity(quantity, checkLocation, 'change');
-checkFieldValidity(quantity, checkTermOfUse, 'change');
+checkInputValidity(firstName, checkFirstName, 'focusout');
+checkInputValidity(lastName, checkLastName, 'focusout');
+checkInputValidity(email, checkEmail, 'focusout');
+checkInputValidity(birthdate, checkBirthDate, 'focusout');
+checkInputValidity(quantity, checkTournamentQuantity, 'focusout');
+checkInputValidity(quantity, checkLocation, 'change');
+checkInputValidity(quantity, checkTermOfUse, 'change');
 
 //Check all inputs form validity
-function checkAllFieldsValidity() {
+function checkAllInputsValidity() {
     checkFirstName();
     checkLastName();
     checkEmail();
@@ -153,17 +185,17 @@ function checkFormValidity() {
   }
 }
 
-//Submit form by checking validity and display a pop-up when it's well done
+//Submit form by checking its validity and display a pop-up when submission is successful
 function submitForm() {
-reserveForm.addEventListener('submit', function (e) {
+  reserveForm.addEventListener('submit', function (e) {
     e.preventDefault();
     if (checkFormValidity() === true) {
       displayModalConfirmation();
       reserveForm.reset();
     } else {
-      checkAllFieldsValidity();
+      checkAllInputsValidity();
     }
-});
+  });
 }
 submitForm();
 
