@@ -5,12 +5,7 @@ const email = document.getElementById('email');
 const birthdate = document.getElementById('birthdate');
 const quantity = document.getElementById('quantity');
 const allLocations = document.getElementById('locations');
-const locationOneButton = document.getElementById('location1');
-const locationTwoButton = document.getElementById('location2');
-const locationThreeButton = document.getElementById('location3');
-const locationFourButton = document.getElementById('location4');
-const locationFiveButton = document.getElementById('location5');
-const locationSixButton = document.getElementById('location6');
+const locationRadioButton = document.getElementsByClassName('checkbox-input');
 const TermOfUse = document.getElementById('checkbox1');
 const reserveForm = document.getElementById('reserve');
 
@@ -108,20 +103,14 @@ function checkTournamentQuantity() {
  * @returns {Boolean}
  **/
 function checkLocation() {
-  if (
-    locationOneButton.checked === false &&
-    locationTwoButton.checked === false &&
-    locationThreeButton.checked === false &&
-    locationFourButton.checked === false &&
-    locationFiveButton.checked === false &&
-    locationSixButton.checked === false
-  ) 
-  {
-    allLocations.setAttribute('data-error-visible', 'true');
-    return false;
+  for (let i = 0; i < locationRadioButton.length; i++) {
+    if (locationRadioButton[i].checked) {
+      allLocations.setAttribute('data-error-visible', 'false');
+      return true;
+    }
   }
-  allLocations.setAttribute('data-error-visible', 'false');
-  return true;
+  allLocations.setAttribute('data-error-visible', 'true');
+  return false;
 }
 
 /**
