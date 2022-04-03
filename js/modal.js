@@ -1,4 +1,5 @@
 // DOM Elements
+const mainNavBar = document.querySelector('.main-navbar')
 const modalbg = document.querySelector('.bground');
 const modalBtn = document.querySelectorAll('.modal-btn');
 const formData = document.querySelectorAll('.formData');

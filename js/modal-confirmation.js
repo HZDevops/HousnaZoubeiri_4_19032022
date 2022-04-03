@@ -1,5 +1,5 @@
 // DOM elemnts of submit confirmation modal
-const modalSubmitConfirmation = document.getElementsByClassName('modal-confirmation');
+const modalSubmitConfirmation = document.querySelector('.modal-confirmation');
 const closeModalSubmitConfirmation = document.getElementsByClassName('close-modal-confirmation'
 );
 const closeBtnSubmitConfirmation = document.getElementById('close-btn-confirmation');
@@ -7,12 +7,14 @@ const closeBtnSubmitConfirmation = document.getElementById('close-btn-confirmati
 // Display modal confirmation
 function displayModalConfirmation() {
   modalbg.style.display = 'none';
-  modalSubmitConfirmation[0].style.display = 'block';
+  modalSubmitConfirmation.style.display = 'block';
+  modalSubmitConfirmation.style.position = 'absolute';
+  modalSubmitConfirmation.style.top = '50px';
 }
 
 // Close modal confirmation
 function closeModalConfirmation() {
-  modalSubmitConfirmation[0].style.display = 'none';
+  modalSubmitConfirmation.style.display = 'none';
   first.style.border = 'none';
   last.style.border = 'none';
   email.style.border = 'none';
