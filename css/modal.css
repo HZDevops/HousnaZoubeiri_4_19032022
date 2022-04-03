@@ -3,6 +3,7 @@
   --font-slab: var(--font-default);
   --modal-duration: 0.8s;
 }
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -40,9 +41,11 @@ img {
   margin-bottom: 50px;
   margin-left: 70px;
 }
+
 .header-logo {
     float: left;
 }
+
 .main-navbar {
     float: right;
 }
@@ -79,16 +82,19 @@ img {
   .topnav{
     margin-bottom: 0;
   }
+
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
     color: red;
   }
+
   img {
     width: 103px;
     height: 19px;
   }
+
   .main-navbar {
     position: relative;
     top: -20px;
@@ -101,11 +107,13 @@ img {
     position: relative;
     padding-bottom: 20px;
   }
+
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
     top: 0;
   }
+
   .topnav.responsive a {
     float: none;
     position: relative;
@@ -114,6 +122,7 @@ img {
     font-size: 15px;
     text-align: left;
   }
+
   .topnav a.icon:hover {
     background-color: white;
     color: red;
@@ -124,7 +133,10 @@ img {
 
 
  @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
+  .topnav a {
+    display: none;
+  }
+
   .topnav a.icon {
     float: right;
     display: block;
@@ -141,8 +153,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -166,8 +176,7 @@ main {
   font-family: var(--font-slab);
 }
 
-/* Modal form */
-
+/* Modal form and Modal confirmation*/
 .button {
   background: #fe142f;
   margin-top: 0.5em;
@@ -186,7 +195,8 @@ main {
   font-size: 16px;
 }
 
-.bground {
+.bground,
+.modal-confirmation {
   display: none;
   position: fixed;
   z-index: 1;
@@ -195,10 +205,11 @@ main {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
+  background-color: #FFFFFF;
 }
 
-.content {
+.content,
+.modal-confirmation-content {
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
@@ -212,9 +223,24 @@ main {
   padding-top: 10px;
 }
 
-.modal-body {
+.modal-body,
+.modal-confirmation-body {
   padding: 15px 8%;
   margin: 15px auto;
+}
+
+.modal-confirmation-body {
+  height: 850.6087036132812px;
+  width: 536px;
+  position: relative;
+  left: -17px;
+  border-radius: 8px;
+}
+
+.modal-confirmation-body p {
+  margin-top: 361px;
+  margin-bottom: 387.61px;
+  text-align: center;
 }
 
 label {
@@ -224,11 +250,13 @@ label {
   display: inline-block;
   margin-bottom: 11px;
 }
+
 input {
   padding: 8px;
   border: 0.8px solid #ccc;
   outline: none;
 }
+
 .text-control {
   margin: 0;
   padding: 8px;
@@ -265,11 +293,6 @@ input[data-error]::after {
   border: 2px solid #e54858;
 }
 
-
-.error {
-  color: green;
-}
-
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -277,6 +300,7 @@ input[data-error]::after {
   font-size: 12px;
   font-weight: normal;
 }
+
 .checkbox-label .checkbox-icon,
 .checkbox2-label .checkbox-icon {
   display: block;
@@ -291,6 +315,7 @@ input[data-error]::after {
   top: -1px;
   transition: 0.3s;
 }
+
 .checkbox-label .checkbox-icon::after,
 .checkbox2-label .checkbox-icon::after {
   content: "";
@@ -307,21 +332,26 @@ input[data-error]::after {
   transition: 0.3s;
   opacity: 0;
 }
+
 .checkbox-input {
   display: none;
 }
+
 .checkbox-input:checked + .checkbox-label .checkbox-icon::after,
 .checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
   opacity: 1;
 }
+
 .checkbox-input:checked + .checkbox2-label .checkbox-icon {
   background: #279e7a;
 }
+
 .checkbox2-label .checkbox-icon {
   border-radius: 4px;
   border: 0;
   background: #c4c4c4;
 }
+
 .checkbox2-label .checkbox-icon::after {
   width: 7px;
   height: 4px;
@@ -334,7 +364,9 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
-.close {
+
+.close,
+.close-modal-confirmation {
   position: absolute;
   right: 15px;
   top: 15px;
@@ -344,8 +376,11 @@ input[data-error]::after {
   cursor: pointer;
   transform: scale(0.7);
 }
+
 .close:before,
-.close:after {
+.close:after,
+.close-modal-confirmation:before,
+.close-modal-confirmation:after {
   position: absolute;
   left: 15px;
   content: " ";
@@ -353,14 +388,20 @@ input[data-error]::after {
   width: 3px;
   background-color: #fff;
 }
-.close:before {
+
+.close:before,
+.close-modal-confirmation:before {
   transform: rotate(45deg);
 }
-.close:after {
+
+.close:after,
+.close-modal-confirmation:after {
   transform: rotate(-45deg);
 }
+
 .btn-submit,
-.btn-signup {
+.btn-signup,
+#close-btn-confirmation {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -371,7 +412,12 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
-/* custom select styles */
+
+.btn-submit:disabled {
+    background-color: gray;
+}
+
+/* Custom select styles */
 .custom-select {
   position: relative;
   font-family: Arial;
@@ -382,6 +428,7 @@ input[data-error]::after {
 .custom-select select {
   display: none;
 }
+
 .select-selected {
   background-color: #fff;
 }
@@ -438,11 +485,12 @@ input[data-error]::after {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* custom select end */
+/* Custom select end */
 .text-label {
   font-weight: normal;
   font-size: 16px;
 }
+
 .hero-section {
   height: 657px;
   border-radius: 10px;
@@ -453,6 +501,7 @@ input[data-error]::after {
   margin-bottom: 10px;
   margin-top: 20px;
 }
+
 .hero-content {
   padding: 51px 67px;
   grid-column: span 4;
@@ -462,6 +511,7 @@ input[data-error]::after {
   text-align: left;
   min-width: 424px;
 }
+
 .hero-content::after {
   content: "";
   width: 100%;
@@ -471,21 +521,25 @@ input[data-error]::after {
   right: -80px;
   top: 0;
 }
+
 .hero-content > * {
   position: relative;
   z-index: 1;
 }
+
 .hero-headline {
   font-size: 6rem;
   font-weight: normal;
   white-space: nowrap;
 }
+
 .hero-text {
   width: 146%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
 }
+
 .btn-signup {
   outline: none;
   text-transform: capitalize;
@@ -494,15 +548,18 @@ input[data-error]::after {
   margin: 0;
   margin-top: 59px;
 }
+
 .hero-img {
   grid-column: span 8;
 }
+
 .hero-img img {
   width: 100%;
   height: 100%;
   display: block;
   padding: 0;
 }
+
 .copyrights {
   color: #fe142f;
   padding: 0;
@@ -510,9 +567,11 @@ input[data-error]::after {
   margin: 60px 0 30px;
   font-weight: bolder;
 }
+
 .hero-section > .btn-signup {
   display: none;
 }
+
 footer {
   padding-left: 1vw;
   padding-right: 2vw;
@@ -529,52 +588,92 @@ footer {
   }
 }
 
-/***Pop-up modal confirmation***/
-/* Background */
-.pop-up {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
-/* Box */
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
-
-.modal-content p {
-    font-size: 1rem;
-    font-weight: bold;
-}
-
-/* The close button */
-.close-modal-confirmation {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+/*.container-confirmation-submit {
   position: relative;
-  top: -25px;
-  right: -10px;
+  width: 1440px;
+  height: 1024px;
+  background: #FFFFFF;
+  display: none;
+  background-color: rgba(35, 35, 35, .5);
+  width: 100%;
+  height: 200vh;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
 }
 
-.close-modal-confirmation:hover,
-.close-modal-confirmation:focus {
-    color: #FF4E60;
-    text-decoration: none;
-    cursor: pointer;
+.submitted-form {
+  position: absolute;
+  left: 31.94%;
+  right: 30.83%;
+  top: 8.5%;
+  bottom: 8.44%;
+  background: #232323;
+  box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
 }
+
+.close-modal-submit {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 2rem;
+  height: 2rem;
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(0.7);
+  color: #FFFFFF;
+}
+
+.close-modal-submit:before,
+.close-modal-submit:after {
+  position: absolute;
+  left: 0.9375rem;
+  content: " ";
+  height: 2.0625rem;
+  width: 0.1875rem;
+  background-color: #fff;
+}
+
+.close-modal-submit:before {
+  transform: rotate(45deg);
+}
+
+.close-modal-submit:after {
+  transform: rotate(-45deg);
+}
+
+.submitted-form p {
+  width: 100%;
+  height: 100%;
+  background-color: #232323;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+}
+
+#close-btn-confirmation {
+  position: relative;
+  top: -165px;
+  outline: none;
+  border: none;
+  font-size: 22px;
+  background: #fe142f;
+  display: flex;
+  margin: auto;
+  padding: 2em;
+  color: #fff;
+  padding: 0.75rem 2.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}*/
 
 /* Mobile media queries */
 @media screen and (max-width: 800px) {
@@ -584,36 +683,44 @@ footer {
     margin-top: 0;
     height: auto;
   }
+
   .hero-content {
     background: #fff;
     color: #000;
     padding: 20px 20px 0;
   }
+
   .hero-content::after {
     content: unset;
   }
+
   .hero-content .btn-signup {
     display: none;
   }
+
   .hero-headline {
     font-size: 40px;
     white-space: normal;
   }
+
   .hero-text {
     width: auto;
     height: auto;
     font-size: 13px;
     margin-top: 20px;
   }
+
   .hero-img img {
     border-radius: 10px;
     margin-top: 35px;
   }
+
   .hero-section > .btn-signup {
     display: block;
     margin: 32px auto 10px;
     padding: 12px 35px;
   }
+  
   .copyrights {
     margin-top: 0;
     text-align: center;

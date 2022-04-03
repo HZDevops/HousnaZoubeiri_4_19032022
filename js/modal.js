@@ -4,6 +4,16 @@ const modalBtn = document.querySelectorAll('.modal-btn');
 const formData = document.querySelectorAll('.formData');
 const closeModalBtn = document.getElementsByClassName('close');
 
+// Display navbar responsive
+function editNav() {
+  var x = document.getElementById('myTopnav');
+  if (x.className === 'topnav') {
+    x.className += ' responsive';
+  } else {
+    x.className = 'topnav';
+  }
+}
+
 // Launch modal event
 modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
 
@@ -18,14 +28,6 @@ function closeModal() {
 }
 closeModalBtn[0].addEventListener('click', closeModal);
 
-// Display navbar responsive
-function editNav() {
-  var x = document.getElementById('myTopnav');
-  if (x.className === 'topnav') {
-    x.className += ' responsive';
-  } else {
-    x.className = 'topnav';
-  }
-}
+
 
 

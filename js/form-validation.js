@@ -12,7 +12,6 @@ const reserveForm = document.getElementById('reserve');
 // Regex expression
 const regexName = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+$/;
 
-
 /**
  * Check firstname validity input
  * @returns {Boolean}
@@ -176,6 +175,7 @@ function checkFormValidity() {
 
 //Submit form by checking its validity and display a pop-up when submission is successful
 function submitForm() {
+  
   reserveForm.addEventListener('submit', function (e) {
     e.preventDefault();
     if (checkFormValidity() === true) {

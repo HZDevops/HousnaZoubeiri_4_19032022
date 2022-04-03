@@ -1,18 +1,25 @@
-const modalConfirmation = document.getElementById('modal-confirmation');
-const modalConfirmationCross = document.getElementsByClassName('close-modal-confirmation'
-)[0];
+// DOM elemnts of submit confirmation modal
+const modalSubmitConfirmation = document.getElementsByClassName('modal-confirmation');
+const closeModalSubmitConfirmation = document.getElementsByClassName('close-modal-confirmation'
+);
+const closeBtnSubmitConfirmation = document.getElementById('close-btn-confirmation');
 
-//Display a modal when reservation form is validated
+// Display modal confirmation
 function displayModalConfirmation() {
-    modalbg.style.display = 'none';
-    modalConfirmation.style.display = 'block';
-    modalConfirmationCross.addEventListener('click', function (e) {
-      e.preventDefault();
-      modalConfirmation.style.display = 'none';
-    });
-    window.addEventListener('click', function (e) {
-        if (e.target === modalConfirmation) {
-         modalConfirmation.style.display = 'none';
-        }
-    });
+  modalbg.style.display = 'none';
+  modalSubmitConfirmation[0].style.display = 'block';
 }
+
+// Close modal confirmation
+function closeModalConfirmation() {
+  modalSubmitConfirmation[0].style.display = 'none';
+  first.style.border = 'none';
+  last.style.border = 'none';
+  email.style.border = 'none';
+  birthdate.style.border = 'none';
+  quantity.style.border = 'none';
+}
+
+// Event closing modal confirmation
+closeModalSubmitConfirmation[0].addEventListener('click', closeModalConfirmation);
+closeBtnSubmitConfirmation.addEventListener('click', closeModalConfirmation);
