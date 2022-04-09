@@ -10,8 +10,10 @@ function editNav() {
   var x = document.getElementById('myTopnav');
   if (x.className === 'topnav') {
     x.className += ' responsive';
+    mainNavBar.style.height = '250px';
   } else {
     x.className = 'topnav';
+    mainNavBar.style.height = '0';
   }
 }
 
@@ -21,11 +23,13 @@ modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
 // Launch modal form
 function launchModal() {
   modalbg.style.display = 'block';
+  mainSection.style.display= 'none';
 }
 
 // Close modal form
 function closeModal() {
   modalbg.style.display = 'none';
+  mainSection.style.display = 'block';
 }
 closeModalBtn[0].addEventListener('click', closeModal);
 
