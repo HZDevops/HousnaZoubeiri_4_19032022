@@ -10,10 +10,8 @@ function editNav() {
   var x = document.getElementById('myTopnav');
   if (x.className === 'topnav') {
     x.className += ' responsive';
-    mainNavBar.style.height = '250px';
   } else {
     x.className = 'topnav';
-    mainNavBar.style.height = '0';
   }
 }
 
