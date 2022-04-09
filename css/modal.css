@@ -30,9 +30,6 @@ p {
 img {
   height: 49.86000442504883px;
   width: 277px;
-  left: 0px;
-  top: 0px;
-  border-radius: 0px;
 }
 
 .topnav {
@@ -242,7 +239,7 @@ main {
 
 .modal-confirmation-body p {
   margin-top: 361px;
-  margin-bottom: 361px;
+  margin-bottom: 250px;
   text-align: center;
 }
 

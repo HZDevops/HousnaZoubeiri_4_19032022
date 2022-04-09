@@ -1,4 +1,5 @@
-// DOM elemnts of submit confirmation modal
+// DOM elements of submit confirmation modal
+const mainSection = document.querySelector('.hero-section');
 const modalSubmitConfirmation = document.querySelector('.modal-confirmation');
 const closeModalSubmitConfirmation = document.getElementsByClassName('close-modal-confirmation'
 );
@@ -7,6 +8,7 @@ const closeBtnSubmitConfirmation = document.getElementById('close-btn-confirmati
 // Display modal confirmation
 function displayModalConfirmation() {
   modalbg.style.display = 'none';
+  mainSection.style.display = 'none';
   modalSubmitConfirmation.style.display = 'block';
   modalSubmitConfirmation.style.position = 'absolute';
   modalSubmitConfirmation.style.top = '50px';
@@ -15,11 +17,7 @@ function displayModalConfirmation() {
 // Close modal confirmation
 function closeModalConfirmation() {
   modalSubmitConfirmation.style.display = 'none';
-  first.style.border = 'none';
-  last.style.border = 'none';
-  email.style.border = 'none';
-  birthdate.style.border = 'none';
-  quantity.style.border = 'none';
+  mainSection.style.display = 'block';
 }
 
 // Event closing modal confirmation
