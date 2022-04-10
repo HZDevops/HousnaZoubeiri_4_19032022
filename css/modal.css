@@ -94,8 +94,8 @@ img {
   }
 
   .main-navbar {
+    display: flex;
     position: relative;
-    z-index: 2;
     top: -20px;
     margin-right: 45px;
   }
@@ -107,7 +107,6 @@ img {
     padding-bottom: 20px;
     background-color: white;
     z-index: 2;
-    height: 230px;
   }
 
   .topnav.responsive .icon {
